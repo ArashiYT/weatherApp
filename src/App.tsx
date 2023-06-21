@@ -9,7 +9,9 @@ export default function AppComponent(): React.ReactElement {
 
     return (
       <div className="container">
-          <FontAwesomeIcon icon={theme == "" ? faSun : faMoon} className="icon" onClick={toggleTheme} />
+        <button className="btn"  onClick={toggleTheme}>
+          <FontAwesomeIcon icon={theme == "" ? faSun : faMoon} className="icon" />
+        </button>
       </div>
     )
 }

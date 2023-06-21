@@ -8,6 +8,7 @@
 :root {
     --background: #5e4feb;
     --color-icon: #e6e6e6;
+    --color-icon-hover: 0.6;
 }
 
 .dark {
