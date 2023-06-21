@@ -5,6 +5,8 @@
     justify-content: center;
 }
 
+
+/* Toggle icon theme */
 .container .btn {
     transition: opacity 250ms ease;
     background: transparent;
@@ -31,4 +33,15 @@
     margin: 5px;
     vertical-align: middle;
     text-align: center;
+}
+
+/* Main content */
+.container .main {
+    background-color: var(--background-main);
+    border-radius: 20px;
+    width: 400px;
+}
+
+.container .main:has(.input) {
+    height: 300px;
 }
