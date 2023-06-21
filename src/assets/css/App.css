@@ -22,7 +22,7 @@
 }
 
 .container .btn:hover {
-    opacity: var(--color-icon-hover);
+    opacity: 0.6;
 }
 
 .container .btn:focus-visible {
@@ -37,11 +37,23 @@
 
 /* Main content */
 .container .main {
+    box-shadow: 0px 0px 25px -2px var(--background-main);
     background-color: var(--background-main);
     border-radius: 20px;
     width: 400px;
 }
 
 .container .main:has(.input) {
-    height: 300px;
+    height: 250px;
+}
+
+/* Responsive */
+@media screen and (width < 438px) {
+    .container .main {
+        transition: background-color 250ms ease;
+        height: 100vh !important;
+        box-shadow: none;
+        border-radius: 0;
+        width: 100%;
+    }
 }

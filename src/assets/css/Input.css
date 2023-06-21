@@ -2,29 +2,106 @@
     display: grid;
     height: 100%;
     place-items: center;
-    align-content: space-evenly;
+    align-content: center;
+    grid-gap: 2rem;
 }
 
+/* Styling input */
 .input input {
+    transition: all 200ms linear;
+    border: 2px solid var(--color-btn);
+    background-color: transparent;
+    color: var(--color-input);
     padding-inline: 13px;
     border-radius: 5px;
     outline: none;
-    border: none;
     height: 50px;
     width: 95%;
 }
 
-.input button {
+.input input::placeholder {
+    color: var(--color-input);
+}
+
+.input input:is(:focus, :hover) {
+    border-color: var(--color-btn-brighter);
+    color: var(--color-input-brighter);
+}
+
+.input input:is(:focus, :hover)::placeholder {
+    color: var(--color-input-brighter);
+}
+
+/* Stylling buttons */
+.input .buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.input .buttons button {
     background-color: var(--color-btn);
+    transition: opacity 250ms ease;
     padding-block: 10px;
-    font-weight: 700;
     border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
     color: #fff;
     outline: none;
     border: none;
     width: 150px;
 }
 
-.input :is(button, input):focus-visible {
-    outline: 1px solid #333
+.input .buttons button:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.input .buttons button:focus-visible {
+    outline: 1px solid var(--outline)
+}
+
+/* Responsive */
+@media screen and (width < 348px) {
+    .input .buttons {
+        margin-top: 2rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .input .buttons button {
+        width: 95%;
+        padding-block: 20px;
+    }
+
+    .input input {
+        height: 70px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Responsive */
+@media screen and (width <= 280px) {
+    .input input {
+        text-align: center;
+    }
+}
+
+@media screen and (height <= 480px) and (width < 348px) {
+    .input {
+        transform: translateX(50%);
+        position: absolute;
+        height: 90%;
+        width: 100%;
+        right: 50%;
+        bottom: 0;
+    }
+}
+
+
+@media screen and (height <= 360px) and (width < 348px) {
+    .input .buttons {
+        margin-top: 0;
+    }
 }

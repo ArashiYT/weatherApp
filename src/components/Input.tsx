@@ -1,14 +1,24 @@
 import { forwardRef } from 'react';
 import "../assets/css/Input.css";
 
-const InputComponent = forwardRef<HTMLInputElement | null, TInputProps>(({ onclick }, ref) => {
+const InputComponent = forwardRef<HTMLInputElement | null, TInputProps>(({ onclick, getLocalization }, ref) => {
+    const placeholder = "Enter the town...";
+
     return (
         <article className="input">
-            <input type="text" id="town" placeholder="Enter the town..." ref={ref} />
-            <button className="button" onClick={onclick}>Search</button>
+            <input 
+                id="town" ref={ref} type="text" 
+                placeholder={placeholder} 
+                onFocus={e => e.target.placeholder = ""} 
+                onBlur={e => e.target.placeholder = placeholder}
+            />
+            <div className="buttons">
+                <button className="button" onClick={onclick}>Search</button>
+                <button className="button" onClick={getLocalization}>Get Localication</button>
+            </div>
         </article>
         )
     })
     
-export type TInputProps = { onclick: () => void; }
+export type TInputProps = { onclick: () => void; getLocalization: () => void }
 export default InputComponent;

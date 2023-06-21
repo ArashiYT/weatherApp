@@ -5,19 +5,40 @@
     font-family: 'Poppins', sans-serif;
 }
 
-:root {
-    --background: #5e4feb;
-    --color-icon: #e6e6e6;
-    --color-icon-hover: 0.6;
-    --background-main: #e6e6e6;
-    --color-btn: #7769f3;
-}
-
-.dark {
-    --background: #222;
-}
-
 body {
     background-color: var(--background);
     transition: background .3s ease;
+}
+
+/* Light Mode */
+:root {
+    --color-btn-brighter: #4432e5;
+    --background-main: #e6e6e6;
+    --background: #5e4feb;
+    --color-icon: #e6e6e6;
+    --color-btn: #7769f3;
+    --color-input: #333;
+    --outline: #333;
+}
+
+/* Dark mode */
+.dark {
+    --color-input-brighter: #aaa;
+    --color-btn-brighter: #808080;
+    --background-main: #323232;
+    --color-btn: #4f4f4f;
+    --color-input: #888;
+    --background: #222;
+    --outline: #ccc;
+}
+
+/* Responsive */
+@media screen and (width < 438px) {
+    :root {
+        --color-icon: #333;
+    }
+
+    .dark {
+        --color-icon: #e6e6e6;
+    }
 }

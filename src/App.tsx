@@ -8,11 +8,26 @@ import "./assets/css/App.css";
 
 export default function AppComponent(): React.ReactElement {
     const { theme, toggleTheme } = useContext <TThemeContext> (ThemeContext)
-    const [data, setData] = useState <WeatherResponse | null> (null)
+    const [data, setData] = useState <IWeatherResponse | null> (null)
+    const [coords, setCoords] = useState <ICoordsResponse | null> (null)
     const town_name = useRef <HTMLInputElement | null> (null)
 
     const sendData = () => {
-      console.log(town_name.current?.value)
+      console.log("Sending data")
+
+      if(coords) {
+        console.log("Download data from coords!")
+        return
+      }
+
+      console.log("Downloading data from town name!")
+    }
+
+    const getLocalization = () => {
+      console.log("Getting localization")
+      
+      setCoords({})
+      sendData()
     }
 
     return (
@@ -21,7 +36,7 @@ export default function AppComponent(): React.ReactElement {
           <FontAwesomeIcon icon={theme == "" ? faSun : faMoon} className="icon" />
         </button>
         <section className="main">
-            {data ? <OutputComponent /> : <InputComponent ref={town_name} onclick={sendData} />}
+            {data ? <OutputComponent /> : <InputComponent ref={town_name} onclick={sendData} getLocalization={getLocalization} />}
         </section>
       </main>
     )

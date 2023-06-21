@@ -1,3 +1,4 @@
 /// <reference types="vite/client" />
 
-interface WeatherResponse {}
+interface IWeatherResponse {}
+interface ICoordsResponse {}
