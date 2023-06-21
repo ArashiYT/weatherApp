@@ -47,6 +47,20 @@
     height: 250px;
 }
 
+.container .main:has(.hidden) {
+    animation-name: fadeOutWithGone;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.container .main:has(.output) {
+    height: 500px;
+    width: 500px;
+    animation-name: fadeIn;
+    animation-duration: 400ms;
+    animation-fill-mode: forwards;
+}
+
 /* Responsive */
 @media screen and (width < 438px) {
     .container .main {
@@ -56,4 +70,21 @@
         border-radius: 0;
         width: 100%;
     }
+}
+
+/* Animations */
+@keyframes fadeOutWithGone {
+    0% { opacity: 1 }
+    40%, 80% { opacity: 0; }
+    
+    100% { 
+        pointer-events: none;
+        opacity: 0; 
+        visibility: hidden; 
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
