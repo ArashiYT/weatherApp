@@ -18,7 +18,7 @@
     width: 40%;
 }
 
-.output .info {
+.output .img .info {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,27 +26,27 @@
     gap: 1rem;
 }
 
-.output .info .temp {
+.output .img .info .temp {
     font-size: 3rem;
     font-weight: 700;
 }
 
-.output .info :is(.weatherInfo, .location) {
+.output .img .info :is(.weatherInfo, .location) {
     font-size: 1.2rem;
 }
 
-.output .info  .location {
+.output .img .info  .location {
     display: flex;
     justify-content:center;
     align-items:center;
     gap: 0.5rem;   
 }
 
-.output .info  .location :is(.icon-weather, .name) {
+.output .img .info  .location :is(.icon-weather, .name) {
     color: var(--background)
 }
 
-.output .info  .location .name {
+.output .img .info  .location .name {
     border-bottom: 2px solid var(--background);
 }
 
@@ -64,21 +64,23 @@
 
 .output .otherInfo {
     justify-content: space-around;
+    border-collapse: collapse;
+    position: absolute;
+    font-size: 1.2rem;
     display: flex;
     width: 100%;
-    position: absolute;
     bottom: 0;
-    font-size: 1.3rem;
-    border-collapse: collapse;
 }
 
 .output .otherInfo :is(.temp-feel, .damp) {
     border-top: 2px solid #3335;
     justify-content: center;
     align-items: center;
+    font-size: 1.2rem;
     display: flex;
     height: 100px;
     width: 50%;
+    gap: 1rem
 }
 
 .output .otherInfo .temp-feel {
@@ -86,6 +88,22 @@
 }
 
 .output .otherInfo .damp {
-    border-left: 1px solid #3335
+    border-left: 1px solid #3335;
 }
 
+.output .otherInfo :is(.temp-feel, .damp) .info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.output .otherInfo .damp .info .precent {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.output .otherInfo :is(.temp-feel, .damp) .icon-info {
+    font-size: 2.0rem;
+    color: var(--background)
+}

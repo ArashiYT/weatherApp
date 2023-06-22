@@ -28,9 +28,9 @@ export default function OutputComponent({}): React.ReactElement<TOutputProps> {
             </div>
             <div className="otherInfo">
                 <div className="temp-feel">
-                    <FontAwesomeIcon icon={faThermometerHalf} />
-                    <div className="temp-info">
-                        <div className="">
+                    <FontAwesomeIcon className="icon-info" icon={faThermometerHalf} />
+                    <div className="info">
+                        <div className="temp">
                             <span>7</span>
                             <sup>&deg;</sup>
                             <span>C</span>
@@ -39,9 +39,9 @@ export default function OutputComponent({}): React.ReactElement<TOutputProps> {
                     </div>
                 </div>
                 <div className="damp">
-                    <FontAwesomeIcon icon={faDroplet} />
-                    <div className="damp-info">
-                        <div className="">
+                    <FontAwesomeIcon className="icon-info" icon={faDroplet} />
+                    <div className="info">
+                        <div className="precent">
                             <span>86</span>
                             <sup>&#x25;</sup>
                         </div>
