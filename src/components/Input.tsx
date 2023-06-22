@@ -15,6 +15,7 @@ const InputComponent = forwardRef <IInputRef | null, TInputProps> (({ onclick, g
 
     return (
         <article className="input" ref={parent}>
+            <div className="space"></div>
             <input 
                 id="town" ref={town} type="text" 
                 placeholder={placeholder} 

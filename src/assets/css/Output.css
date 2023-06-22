@@ -1,9 +1,10 @@
 .output {
-    display: flex;
+    color: var(--color-all-text);
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     overflow: hidden;
+    display: flex;
 }
 
 .output .img {
@@ -43,16 +44,16 @@
 }
 
 .output .img .info  .location :is(.icon-weather, .name) {
-    color: var(--background)
+    color:  var(--color-text);
 }
 
 .output .img .info  .location .name {
-    border-bottom: 2px solid var(--background);
+    border-bottom: 2px solid var(--color-text);
 }
 
 .output .title {
-    border-bottom: 2px solid #3335;
-    color: var(--background);
+    border-bottom: 2px solid var(--border-color);
+    color: var(--color-text);
     justify-content:center;
     align-items:center;
     font-size: 2rem;
@@ -73,7 +74,7 @@
 }
 
 .output .otherInfo :is(.temp-feel, .damp) {
-    border-top: 2px solid #3335;
+    border-top: 2px solid var(--border-color);
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
@@ -84,11 +85,11 @@
 }
 
 .output .otherInfo .temp-feel {
-    border-right: 1px solid #3335;
+    border-right: 1px solid var(--border-color);
 }
 
 .output .otherInfo .damp {
-    border-left: 1px solid #3335;
+    border-left: 1px solid var(--border-color);
 }
 
 .output .otherInfo :is(.temp-feel, .damp) .info {
@@ -105,5 +106,39 @@
 
 .output .otherInfo :is(.temp-feel, .damp) .icon-info {
     font-size: 2.0rem;
-    color: var(--background)
+    color: var(--color-text)
+}
+
+/* Responsive */
+@media screen and (width < 438px) {
+    .output .img {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .output .otherInfo { 
+        position: static
+    }
+}
+
+@media screen and (width <= 380px){
+    .output .otherInfo {
+        margin-top: 3rem;
+        flex-direction: column;
+    }
+
+    .output .otherInfo :is(.temp-feel, .damp) {
+        border-inline: none;
+        width: 100%;
+    }
+
+    .output .title {
+        font-size: 1.2rem
+    }
+}
+
+@media screen and (height <= 468px){
+    .output .otherInfo {
+        position: static
+    }
 }

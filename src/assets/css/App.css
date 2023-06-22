@@ -64,13 +64,14 @@
 }
 
 /* Responsive */
-@media screen and (width < 438px) {
+@media screen and (width <= 520px) {
     .container .main {
         transition: background-color 250ms ease;
-        height: 100vh !important;
+        height: auto !important;
+        width: 100% !important;
+        min-height: 100vh;
         box-shadow: none;
         border-radius: 0;
-        width: 100%;
     }
 }
 
