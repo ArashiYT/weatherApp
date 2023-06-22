@@ -45,11 +45,17 @@
     width: 400px;
 }
 
+.container .main:has(:is(.input, .output)) {
+    animation-name: fadeIn;
+    animation-duration: 400ms;
+    animation-fill-mode: forwards;
+}
+
 .container .main:has(.input) {
     height: 250px;
 }
 
-.container .main:has(.hidden) {
+.container .main:has(:is(.input, .output).hidden) {
     animation-name: fadeOutWithGone;
     animation-duration: 1s;
     animation-fill-mode: forwards;
@@ -58,9 +64,6 @@
 .container .main:has(.output) {
     height: 500px;
     width: 500px;
-    animation-name: fadeIn;
-    animation-duration: 400ms;
-    animation-fill-mode: forwards;
 }
 
 /* Responsive */

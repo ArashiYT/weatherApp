@@ -34,6 +34,12 @@
 
 .output .img .info :is(.weatherInfo, .location) {
     font-size: 1.2rem;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.output .img .info .weatherInfo {
+    width: 80%;
 }
 
 .output .img .info  .location {
@@ -54,7 +60,7 @@
 .output .title {
     border-bottom: 2px solid var(--border-color);
     color: var(--color-text);
-    justify-content:center;
+    justify-content: center;
     align-items:center;
     font-size: 2rem;
     font-weight: 700;
@@ -109,6 +115,32 @@
     color: var(--color-text)
 }
 
+/* Return button */
+.output .title .btnReturn {
+    background: transparent;
+    color: var(--color-text);
+    position: absolute;
+    font-size: 1.5rem;
+    outline: none;
+    border: none;
+    left: 20px;
+}
+
+.output .title .btnReturn:focus-visible {
+    outline: 1px solid var(--outline);
+}
+
+.output .title .btnReturn:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.output .title .btnReturn .icon-btn {
+    vertical-align: middle;
+    text-align: center;
+    margin: 5px;
+}
+
 /* Responsive */
 @media screen and (width < 438px) {
     .output .img {
@@ -118,6 +150,10 @@
 
     .output .otherInfo { 
         position: static
+    }
+
+    .output .otherInfo :is(.temp-feel, .damp) {
+        border-bottom: 2px solid var(--border-color);
     }
 }
 
@@ -129,11 +165,20 @@
 
     .output .otherInfo :is(.temp-feel, .damp) {
         border-inline: none;
+        border-bottom: none;
         width: 100%;
     }
 
     .output .title {
         font-size: 1.2rem
+    }
+
+    .output .img .info .location {
+        font-size: 1rem;
+    }
+
+    .output .img img {
+        width: 60%;
     }
 }
 

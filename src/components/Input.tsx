@@ -3,25 +3,31 @@ import { faSearch, faLocation } from '@fortawesome/free-solid-svg-icons';
 import React, { forwardRef, useRef } from 'react';
 import "../assets/css/Input.css";
 
-const InputComponent = forwardRef <IInputRef | null, TInputProps> (({ onclick, getLocation }, ref) => {
+const InputComponent = forwardRef <IInputRef | null, TInputProps> (({ onclick, getLocation, errorMessage }, ref) => {
     const town = useRef <HTMLInputElement | null> (null)
     const parent = useRef <HTMLElement | null> (null)
     const placeholder = "Enter the town...";
 
     React.useImperativeHandle<IInputRef, IInputRef>(ref, () => ({
         getParentElement: () => parent.current,
-        getTownName: () => town.current?.value ?? null
+        getTownName: () => town.current?.value ?? null,
+        resetTownName: () => {
+            if(town.current) town.current.value = ""
+        }
     }))
 
     return (
         <article className="input" ref={parent}>
             <div className="space"></div>
-            <input 
-                id="town" ref={town} type="text" 
-                placeholder={placeholder} 
-                onFocus={e => e.target.placeholder = ""} 
-                onBlur={e => e.target.placeholder = placeholder}
-            />
+            <div className="input-field">
+                <div className="errorMessage">{errorMessage}</div>
+                <input 
+                    id="town" ref={town} type="text" className={`input-text ${errorMessage == "" ? '': 'error'}`.trim()}
+                    placeholder={placeholder} autoComplete="off"
+                    onFocus={e => e.target.placeholder = ""} 
+                    onBlur={e => e.target.placeholder = placeholder}
+                />
+            </div>
             <div className="buttons">
                 <button className="button" onClick={() => onclick()}>
                     <FontAwesomeIcon icon={faSearch} />
@@ -36,5 +42,5 @@ const InputComponent = forwardRef <IInputRef | null, TInputProps> (({ onclick, g
         )
     })
     
-export type TInputProps = { onclick: () => Promise<void>; getLocation: () => Promise<void> }
+export type TInputProps = { onclick: () => Promise<void>; getLocation: () => Promise<void>; errorMessage: string;}
 export default InputComponent;

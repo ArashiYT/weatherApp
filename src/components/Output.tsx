@@ -1,28 +1,30 @@
-import { faLocationDot, faDroplet, faThermometerHalf } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faDroplet, faThermometerHalf, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import getImage from "../assets/func/getImage";
 import "../assets/css/Output.css"
-import React from 'react';
+import { forwardRef } from 'react';
 
-export type TOutputProps = {}
-export default function OutputComponent({}): React.ReactElement<TOutputProps> {
-    const img = getImage("cloud");
-
+export type TOutputProps = { data: IWeatherResponse; returnClick: () => Promise<void>; }
+const OutputComponent = forwardRef<HTMLElement | null, TOutputProps>(({ data, returnClick }, ref) => {
     return (
-        <article className="output">
-            <div className="title"> Weather App </div>
+        <article className="output" ref={ref}>
+            <div className="title"> 
+                <button className="btnReturn" onClick={() => returnClick()}>
+                    <FontAwesomeIcon className="icon-btn" icon={faArrowLeft} />
+                </button>
+                <span>Weather App</span> 
+            </div>
             <div className="img">
-                <img src={img} alt="weather" />
+                <img src={`https:${data.current.condition.icon}`} alt="weather" />
                 <div className="info">
                     <div className="temp">
-                        <span>7</span>
+                        <span>{data.current.temp_c}</span>
                         <sup>&deg;</sup>
                         <span>C</span>
                     </div>
-                    <div className="weatherInfo">Broken Clouds</div>
+                    <div className="weatherInfo">{data.current.condition.text}</div>
                     <div className="location">
                         <FontAwesomeIcon className="icon-weather" icon={faLocationDot} />
-                        <span className="name">Warsaw, Poland</span>
+                        <span className="name">{data.location.name}, {data.location.country}</span>
                     </div>
                 </div>
             </div>
@@ -31,7 +33,7 @@ export default function OutputComponent({}): React.ReactElement<TOutputProps> {
                     <FontAwesomeIcon className="icon-info" icon={faThermometerHalf} />
                     <div className="info">
                         <div className="temp">
-                            <span>7</span>
+                            <span>{data.current.feelslike_c}</span>
                             <sup>&deg;</sup>
                             <span>C</span>
                         </div>
@@ -42,7 +44,7 @@ export default function OutputComponent({}): React.ReactElement<TOutputProps> {
                     <FontAwesomeIcon className="icon-info" icon={faDroplet} />
                     <div className="info">
                         <div className="precent">
-                            <span>86</span>
+                            <span>{data.current.humidity}</span>
                             <sup>&#x25;</sup>
                         </div>
                         <span className="feel">Humidity</span>
@@ -51,4 +53,6 @@ export default function OutputComponent({}): React.ReactElement<TOutputProps> {
             </div>
         </article>
     )
-}
+})
+
+export default OutputComponent;
