@@ -9,15 +9,16 @@
 /* Toggle icon theme */
 .container .btn {
     transition: opacity 250ms ease;
-    background: transparent;
-    border: none;
-    outline: none;
     color: var(--color-icon);
+    background: transparent;
     position: absolute;
     font-size: 1.5rem;
     font-weight: 700;
     cursor: pointer;
+    outline: none;
+    border: none;
     right: 20px;
+    z-index: 1;
     top: 10px;
 }
 
@@ -40,6 +41,7 @@
     box-shadow: 0px 0px 25px -2px var(--background-main);
     background-color: var(--background-main);
     border-radius: 20px;
+    position: relative;
     width: 400px;
 }
 

@@ -5,19 +5,22 @@ import React, { useContext, useState, useRef } from "react";
 import OutputComponent from "./components/Output";
 import InputComponent from "./components/Input";
 import wait from "./assets/func/wait";
+import { ENDPOINT } from "./options";
 import "./assets/css/App.css";
 
 export default function AppComponent(): React.ReactElement {
     const { theme, toggleTheme } = useContext <TThemeContext> (ThemeContext)
     const [data, setData] = useState <IWeatherResponse | null> (null)
     const [errorMessage, setErrorMessage] = useState <string> ("")
+    const abort: AbortController = new AbortController();
     const input = useRef <IInputRef | null> (null)
 
     const sendData = async (coords: ICoordsResponse | null = null) => {  
-      //Fetch data
-        //...
+      try {
+        const apiID: string = import.meta.env.VITE_WEATHER_API;
+      
 
-      // Downloading parent Elemet in input Component
+      //Downloading parent Elemet in input Component
         const parent = input.current?.getParentElement()
         if(!parent) return
 
@@ -25,6 +28,11 @@ export default function AppComponent(): React.ReactElement {
         parent.classList.add("hidden")
         await wait(800)
         setData({})
+      }
+
+      catch(err) {
+
+      }
     }
 
     const getLocation = async () => {
