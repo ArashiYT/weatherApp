@@ -1,33 +1,62 @@
+import { TThemeContext, ThemeContext } from "./components/ThemeProvider";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState, useRef } from "react";
-import { TThemeContext, ThemeContext } from "./components/ThemeProvider";
 import OutputComponent from "./components/Output";
 import InputComponent from "./components/Input";
+import wait from "./assets/func/wait";
+import { ENDPOINT } from "./options";
 import "./assets/css/App.css";
 
 export default function AppComponent(): React.ReactElement {
     const { theme, toggleTheme } = useContext <TThemeContext> (ThemeContext)
     const [data, setData] = useState <IWeatherResponse | null> (null)
-    const [coords, setCoords] = useState <ICoordsResponse | null> (null)
-    const town_name = useRef <HTMLInputElement | null> (null)
+    const [errorMessage, setErrorMessage] = useState <string> ("")
+    const abort: AbortController = new AbortController();
+    const input = useRef <IInputRef | null> (null)
 
-    const sendData = () => {
-      console.log("Sending data")
+    const sendData = async (coords: ICoordsResponse | null = null) => {  
+      try {
+        const apiID: string = import.meta.env.VITE_WEATHER_API;
+      
 
-      if(coords) {
-        console.log("Download data from coords!")
-        return
+      //Downloading parent Elemet in input Component
+        const parent = input.current?.getParentElement()
+        if(!parent) return
+
+      //Animation and save data
+        parent.classList.add("hidden")
+        await wait(800)
+        setData({})
       }
 
-      console.log("Downloading data from town name!")
+      catch(err) {
+
+      }
     }
 
-    const getLocalization = () => {
-      console.log("Getting localization")
-      
-      setCoords({})
-      sendData()
+    const getLocation = async () => {
+        if(navigator.geolocation) {
+        
+          //Handle Success
+            const onSuccess = (location: GeolocationPosition) => {
+                const { longitude, latitude }: GeolocationCoordinates = location.coords;
+              
+                //Save Coords
+                  return sendData({ longitude, latitude })
+            }
+
+          //Handle Error
+            const onError = (location: GeolocationPositionError) => {
+                setErrorMessage(location.message)
+            }
+          
+          //Downloading position
+            navigator.geolocation.getCurrentPosition(onSuccess, onError)
+            
+        }
+
+        setErrorMessage("Your browser not support geolocation api!")
     }
 
     return (
@@ -36,7 +65,7 @@ export default function AppComponent(): React.ReactElement {
           <FontAwesomeIcon icon={theme == "" ? faSun : faMoon} className="icon" />
         </button>
         <section className="main">
-            {data ? <OutputComponent /> : <InputComponent ref={town_name} onclick={sendData} getLocalization={getLocalization} />}
+            {data ? <OutputComponent /> : <InputComponent ref={input} onclick={sendData} getLocation={getLocation} />}
         </section>
       </main>
     )

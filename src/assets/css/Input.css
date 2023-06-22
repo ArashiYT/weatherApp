@@ -50,6 +50,10 @@
     outline: none;
     border: none;
     width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .input .buttons button:hover {
@@ -82,26 +86,55 @@
 }
 
 /* Responsive */
+@media screen and (width <= 520px) {
+    .input {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+    }
+}
+
+
 @media screen and (width <= 280px) {
+   
     .input input {
         text-align: center;
     }
 }
 
-@media screen and (height <= 480px) and (width < 348px) {
-    .input {
-        transform: translateX(50%);
-        position: absolute;
-        height: 90%;
+@media screen and (width < 348px) and (height <= 420px) {
+    .input .space {
         width: 100%;
-        right: 50%;
-        bottom: 0;
+        height: calc(100vh - 350px);
+    }
+
+    .input {
+        position: static;
+        transform: none;
+        padding-bottom: 1rem;
     }
 }
 
+@media screen and (width < 348px) and (height <= 380px) {
+    .input .space {
+        height: calc(100vh - 300px);
+    }
 
-@media screen and (height <= 360px) and (width < 348px) {
-    .input .buttons {
-        margin-top: 0;
+    .input  {
+        grid-gap: 0;
+    }
+}
+
+@media screen and (width < 348px) and (height <= 320px) {
+    .input .space {
+        height: calc(100vh - 250px);
+    }
+}
+
+@media screen and (width < 348px) and (height <= 300px) {
+    .input .space {
+        height: calc(100vh - 180px)
     }
 }

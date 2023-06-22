@@ -1,0 +1,144 @@
+.output {
+    color: var(--color-all-text);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    display: flex;
+}
+
+.output .img {
+    justify-content: space-around;
+    align-items: center;
+    margin-block: 2rem;
+    display: flex;
+    width: 100%;
+}
+
+.output .img img {
+    width: 40%;
+}
+
+.output .img .info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.output .img .info .temp {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.output .img .info :is(.weatherInfo, .location) {
+    font-size: 1.2rem;
+}
+
+.output .img .info  .location {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    gap: 0.5rem;   
+}
+
+.output .img .info  .location :is(.icon-weather, .name) {
+    color:  var(--color-text);
+}
+
+.output .img .info  .location .name {
+    border-bottom: 2px solid var(--color-text);
+}
+
+.output .title {
+    border-bottom: 2px solid var(--border-color);
+    color: var(--color-text);
+    justify-content:center;
+    align-items:center;
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex;
+    height: 100px;
+    width: 100%;
+}
+
+.output .otherInfo {
+    justify-content: space-around;
+    border-collapse: collapse;
+    position: absolute;
+    font-size: 1.2rem;
+    display: flex;
+    width: 100%;
+    bottom: 0;
+}
+
+.output .otherInfo :is(.temp-feel, .damp) {
+    border-top: 2px solid var(--border-color);
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    display: flex;
+    height: 100px;
+    width: 50%;
+    gap: 1rem
+}
+
+.output .otherInfo .temp-feel {
+    border-right: 1px solid var(--border-color);
+}
+
+.output .otherInfo .damp {
+    border-left: 1px solid var(--border-color);
+}
+
+.output .otherInfo :is(.temp-feel, .damp) .info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.output .otherInfo .damp .info .precent {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.output .otherInfo :is(.temp-feel, .damp) .icon-info {
+    font-size: 2.0rem;
+    color: var(--color-text)
+}
+
+/* Responsive */
+@media screen and (width < 438px) {
+    .output .img {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .output .otherInfo { 
+        position: static
+    }
+}
+
+@media screen and (width <= 380px){
+    .output .otherInfo {
+        margin-top: 3rem;
+        flex-direction: column;
+    }
+
+    .output .otherInfo :is(.temp-feel, .damp) {
+        border-inline: none;
+        width: 100%;
+    }
+
+    .output .title {
+        font-size: 1.2rem
+    }
+}
+
+@media screen and (height <= 468px){
+    .output .otherInfo {
+        position: static
+    }
+}
