@@ -46,7 +46,8 @@
     display: flex;
     justify-content:center;
     align-items:center;
-    gap: 0.5rem;   
+    gap: 0.5rem;
+    padding-inline: 0.5rem;
 }
 
 .output .img .info  .location :is(.icon-weather, .name) {

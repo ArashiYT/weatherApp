@@ -12,11 +12,15 @@ body {
 
 /* Light Mode */
 :root {
+    --error-color-text-message: #ed4b4b;
+    --error-background-color: #e24e4e;
+    --error-border-color: #ce3636;
     --color-all-text: var(--outline);
     --color-btn-brighter: #4432e5;
     --color-text: var(--background);
     --color-input: var(--outline);
     --background-main: #e6e6e6;
+    --error-color: #a81111;
     --background: #5e4feb;
     --color-icon: #e6e6e6;
     --color-btn: #7769f3;
@@ -26,14 +30,18 @@ body {
 
 /* Dark mode */
 .dark {
-    --color-all-text: #fff;
-    --color-input-brighter: #aaa;
+    --error-color-text-message: #f32b2b;
+    --error-background-color: #dc3838;
+    --error-border-color: #c73333;
     --color-btn-brighter: #808080;
+    --color-input-brighter: #aaa;
     --background-main: #323232;
+    --color-all-text: #fff;
+    --error-color: #620909;
+    --color-text: #51df51;
     --border-color: #ccc5;
     --color-btn: #4f4f4f;
     --color-input: #888;
-    --color-text: rgb(81, 223, 81);
     --background: #222;
     --outline: #ccc;
 }

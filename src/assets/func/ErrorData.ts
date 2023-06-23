@@ -1,8 +1,8 @@
 export default class ErrorData extends Error {
     public data: any
    
-    constructor(data: any, message: string = "") {
-        super(message);
+    constructor(data: IErrorResponse) {
+        super();
         this.data = data;
     }
 }

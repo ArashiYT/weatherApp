@@ -24,14 +24,18 @@
 }
 
 .input input.error {
-    border-color: #c73333;
-    background-color: #dc3838;
-    color: #620909;
+    border-color: var(--error-border-color);
+    background-color: var(--error-background-color);
+    color: var(--error-color);
     animation: sharke 0.82s forwards;
 }
 
+.input input:disabled {
+    opacity: 0.5;
+}
+
 .input input.error::placeholder {
-    color: #620909;
+    color: var(--error-color);
 }
 
 .input input::placeholder {
@@ -39,16 +43,16 @@
 }
 
 .input .errorMessage {
-    color: #f32b2b;
+    color: var(--error-color-text-message);
     font-weight: 700;
 }
 
-.input input:not(.error):is(:focus, :hover) {
+.input input:not(.error, :disabled):is(:focus, :hover) {
     border-color: var(--color-btn-brighter);
     color: var(--color-input-brighter);
 }
 
-.input input:is(:focus, :hover)::placeholder {
+.input input:not(:disabled, .error):is(:focus, :hover)::placeholder {
     color: var(--color-input-brighter);
 }
 
@@ -65,7 +69,6 @@
     padding-block: 10px;
     border-radius: 5px;
     font-weight: 700;
-    cursor: pointer;
     color: #fff;
     outline: none;
     border: none;
@@ -76,12 +79,16 @@
     gap: 0.5rem;
 }
 
-.input .buttons button:hover {
+.input .buttons button:disabled {
+    opacity: 0.5;
+}
+
+.input .buttons button:not(:disabled):hover {
     cursor: pointer;
     opacity: 0.6;
 }
 
-.input .buttons button:focus-visible {
+.input .buttons button:not(:disabled):focus-visible {
     outline: 1px solid var(--outline)
 }
 

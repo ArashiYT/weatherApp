@@ -31,3 +31,8 @@ interface IInputRef {
     getParentElement: () => HTMLElement | null;
     resetTownName: () => void;
 }
+
+interface IErrorResponse {
+    message: string;
+    inputError: boolean
+}
