@@ -16,4 +16,14 @@
 
 ## Instalation
 
-You need [NodeJS v.18](https://nodejs.org/en "Node JS") to install the application. When you have this you should copy code from this repository
+You need [NodeJS v.18](https://nodejs.org/en "Node JS") to install the application. When you have this you should copy code from this repository using download from website or using this comamnd in cmd:
+:
+
+```
+git clone https://github.com/ArashiYT/weatherApp.git
+```
+
+When you downloading code, in the directory where code it is, you use this command in cmd:
+```
+
+```
