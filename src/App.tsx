@@ -41,11 +41,13 @@ export default function AppComponent(): React.ReactElement {
             signal: abort.signal
         })
           .then(res => res.json())
-          .catch(()=> abort.abort())
+          .catch((e: any) => 
+            ({error: { code: 400, message: e.message }})
+          )
 
       //Handle error
       if(dataWeather?.error) throw new ErrorData({message: dataWeather.error.message, inputError: true});
-
+      
       //Downloading parent Elemet in input Component
         const parent = input.current?.getParentElement()
         if(!parent) return
