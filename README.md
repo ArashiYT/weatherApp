@@ -41,6 +41,6 @@ A dist directory will be created and in this directory are the files you are upl
 
 ## Authors
 
-I am the only author of this project whose work took several hours in between. This is my first project on Github and the rest I have saved on a local drive on my computer. And I hope this really simple project will inspire someone.
+I am the only author of this project whose work took several hours in between. This is my first project on GITHUB and the rest I have saved on a local drive on my computer. And I hope this really simple project will inspire someone.
 
 📌 My English is not particularly fine, but I am still training 😅. 
